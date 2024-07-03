@@ -2702,6 +2702,7 @@ GameObject:
   - component: {fileID: 6377415424867952039}
   - component: {fileID: 7457903252797304914}
   - component: {fileID: 657291476077782858}
+  - component: {fileID: 6186577711502016612}
   m_Layer: 0
   m_Name: Robot_Soldier_Black
   m_TagString: Untagged
@@ -2817,7 +2818,6 @@ MonoBehaviour:
   maxhitpoints: 0
   hitsound: {fileID: 8300000, guid: fd692e0fd3d98f54983c6b221b76f5f4, type: 3}
   deathsound: {fileID: 8300000, guid: 11080239c2070e04b8447f48cb3f92d9, type: 3}
-  canMove: 0
   dead: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
@@ -2831,6 +2831,28 @@ MonoBehaviour:
   - {fileID: 3286993470264944345, guid: ace629ac2d606d84388839dce48a04d2, type: 3}
   - {fileID: 5030629861040191798, guid: b669f4a5e69edcc4b8b99a81216e5917, type: 3}
   rng: 0
+--- !u!195 &6186577711502016612
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981860918171908}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1995085305086754
 GameObject:
   m_ObjectHideFlags: 0

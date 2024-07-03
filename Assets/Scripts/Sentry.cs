@@ -8,7 +8,7 @@ public class Sentry : Enemy
     // Start is called before the first frame update
     // Update is called once per frame
     protected override void Update() {
-        anim.SetBool("Player", !player.dead && hit.collider != null); // since raycast cannot detect player(changing player layer does nothing), raycast checks for player weapon instead.
+        anim.SetBool("Player", !player.dead && hit.collider != null && hit.collider.GetComponent<Weapon>()); // since raycast cannot detect player(changing player layer does nothing), raycast checks for player weapon instead.
         Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
         //Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
         //print(hitpoints);

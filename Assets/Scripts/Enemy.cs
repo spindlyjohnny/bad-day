@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.AI;
 
 public class Enemy : Unit
 {
@@ -12,6 +13,13 @@ public class Enemy : Unit
     public GameObject[] drops;
     [SerializeField]protected float rng;
     protected int dropindex;
+    NavMeshAgent agent;
+    public float minTimeUnderCover, maxTimeUnderCover;
+    public int minShotsToTake, maxShotsToTake;
+    [Range(0, 100)] public float accuracy;
+    Transform nearestCover;
+    bool shooting;
+    [HideInInspector]public int currentShotsTaken,currentMaxShotsToTake;
     //LevelManager levelManager;
     // Start is called before the first frame update
     protected virtual void Start()
@@ -23,6 +31,9 @@ public class Enemy : Unit
         player = FindObjectOfType<Player>();
         //levelManager = FindObjectOfType<LevelManager>();
         dead = false;
+        shooting = false;
+        agent = GetComponent<NavMeshAgent>();
+        Init();
         //canMove = true;
     }
 
@@ -30,16 +41,21 @@ public class Enemy : Unit
     protected virtual void Update()
     {
         anim.SetBool("Death", dead);
-        anim.SetBool("Player", !player.dead && hit.collider != null); // since boxcast cannot detect player(changing player layer does nothing), boxcast checks for player weapon instead.
+        anim.SetBool("Player", shooting/*!player.dead && hit.collider != null && hit.collider.GetComponent<Weapon>()*/); // since boxcast cannot detect player(changing player layer does nothing), boxcast checks for player weapon instead.
+        anim.SetFloat("Speed", agent.velocity.sqrMagnitude);
         Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
-        //Physics.Raycast(rayposition.position,rayposition.transform.forward,out hit,10);
+        if (hit.collider != null && hit.collider.GetComponent<Weapon>()) { // move to closest cover if player detected
+            GetToCover();
+        }
         if (hitpoints <= 0)StartCoroutine(Death());
-        //Physics.Raycast(weapon.transform.localPosition, Vector3.forward, out player, Mathf.Infinity);
-        //float angle = Mathf.Atan2(player.transform.position.y, transform.position.x) * Mathf.Rad2Deg;
-        //Camera cam = FindObjectOfType<Camera>();
-        //Quaternion lookRotation = Quaternion.LookRotation((player.transform.position - transform.position).normalized);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, 360 * Time.deltaTime);
-        
+        if(agent.isStopped == false && (transform.position - nearestCover.position).sqrMagnitude < 0.1f) { // if agent is near cover
+            agent.isStopped = true;
+            StartCoroutine(ShootCo());
+        }
+        Vector3 dir = player.GetComponentInChildren<Camera>().transform.position - transform.position;
+        dir.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 180 * Time.deltaTime);
     }
     protected virtual IEnumerator Death() {
         dead = true;
@@ -63,8 +79,32 @@ public class Enemy : Unit
         }
         Instantiate(drops[dropindex], transform.position, transform.rotation);
     }
+    public void Init() {
+        GameObject coverSpots = GameObject.Find("Cover Spots");
+        foreach (var i in coverSpots.GetComponentsInChildren<Transform>()) { // finds closest cover spot
+            float closest = 999;
+            if (Vector3.Distance(transform.position, i.transform.position) < closest) {
+                closest = Vector3.Distance(transform.position, i.transform.position);
+            }
+            if (Vector3.Distance(transform.position, i.transform.position) == closest) {
+                nearestCover = i.transform;
+            }
+        }
+        GetToCover();
+    }
     public virtual void Shoot() { // animation event.
         weapon.Fire();
+    }
+    void GetToCover() {
+        agent.isStopped = false;
+        agent.SetDestination(nearestCover.position);
+    }
+    public IEnumerator ShootCo() {
+        anim.SetTrigger("Crouch");
+        yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeUnderCover, maxTimeUnderCover)); // enemy hides under cover for random period
+        shooting = true;
+        currentMaxShotsToTake = UnityEngine.Random.Range(minShotsToTake, maxShotsToTake); // enemy takes a random amount of shots at the player
+        currentShotsTaken = 0;
     }
     protected virtual void OnDrawGizmos() {
         Gizmos.color = Color.red;

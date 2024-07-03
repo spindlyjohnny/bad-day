@@ -18,9 +18,21 @@ public class EnemyWeapon : Weapon
     }
     public override void Fire() {
         Destroy(Instantiate(muzzleflash, firept.position, Quaternion.identity), .3f);
-        if (enemy.hit.collider && enemy.hit.collider.GetComponent<Weapon>()) {
-            enemy.player.Damaged(damage);
+        bool hitplayer = Random.Range(0, 100) < enemy.accuracy;
+        if (hitplayer) {
+            RaycastHit hit;
+            if (Physics.Raycast(firept.position, FindObjectOfType<Camera>().transform.position - firept.position, out hit)) {
+                Player player = hit.collider.GetComponentInParent<Player>();
+                if (player) player.Damaged(damage);
+            }
+            enemy.currentShotsTaken++;
+            if(enemy.currentShotsTaken >= enemy.currentMaxShotsToTake) {
+                StartCoroutine(enemy.ShootCo());
+            }
         }
+        //if (enemy.hit.collider && enemy.hit.collider.GetComponent<Weapon>() && hitplayer) {
+        //    enemy.player.Damaged(damage);
+        //}
         AudioManager.instance.PlaySFX(shootSound);
         //if(hit.collider)print(hit.collider.name);
         //if (hit.collider.GetComponent<Enemy>()) {

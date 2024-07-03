@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour {
     //public Slider healthbar;
     public AudioClip hitsound, deathsound;
     //public GameObject bloodvfx, hiteffect;
-    public bool canMove, dead;
+    public bool /*canMove, */dead;
     [HideInInspector]public Animator anim;
     [HideInInspector]public Rigidbody rb;
     public Material originalmat,hurtmat;
