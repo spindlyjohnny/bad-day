@@ -20,6 +20,7 @@ public class Enemy : Unit
     Transform nearestCover;
     bool shooting;
     [HideInInspector]public int currentShotsTaken,currentMaxShotsToTake;
+    [SerializeField]Transform[] coverSpots;
     //LevelManager levelManager;
     // Start is called before the first frame update
     protected virtual void Start()
@@ -80,16 +81,18 @@ public class Enemy : Unit
         Instantiate(drops[dropindex], transform.position, transform.rotation);
     }
     public void Init() {
-        GameObject coverSpots = GameObject.Find("Cover Spots");
-        foreach (var i in coverSpots.GetComponentsInChildren<Transform>()) { // finds closest cover spot
-            float closest = 999;
-            if (Vector3.Distance(transform.position, i.transform.position) < closest) {
-                closest = Vector3.Distance(transform.position, i.transform.position);
-            }
-            if (Vector3.Distance(transform.position, i.transform.position) == closest) {
-                nearestCover = i.transform;
-            }
-        }
+        nearestCover = coverSpots[UnityEngine.Random.Range(0, coverSpots.Length)];
+        if (Physics.Raycast(rayposition.position, nearestCover.position))nearestCover = coverSpots[UnityEngine.Random.Range(0, coverSpots.Length)];
+        //foreach (var i in coverSpots) { // finds closest cover spot
+        //    float closest = 999;
+        //    if (Vector3.Distance(transform.position, i.position) < closest) {
+        //        closest = Vector3.Distance(transform.position, i.transform.position);
+        //    }
+        //    if (Vector3.Distance(transform.position, i.position) == closest) {
+        //        nearestCover = i;
+        //    }
+        //    print(closest);
+        //}
         GetToCover();
     }
     public virtual void Shoot() { // animation event.
@@ -102,6 +105,7 @@ public class Enemy : Unit
     public IEnumerator ShootCo() {
         anim.SetTrigger("Crouch");
         yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeUnderCover, maxTimeUnderCover)); // enemy hides under cover for random period
+        anim.SetTrigger("Crouch");
         shooting = true;
         currentMaxShotsToTake = UnityEngine.Random.Range(minShotsToTake, maxShotsToTake); // enemy takes a random amount of shots at the player
         currentShotsTaken = 0;

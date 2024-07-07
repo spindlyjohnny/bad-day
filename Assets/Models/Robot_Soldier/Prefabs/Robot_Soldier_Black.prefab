@@ -2831,6 +2831,13 @@ MonoBehaviour:
   - {fileID: 3286993470264944345, guid: ace629ac2d606d84388839dce48a04d2, type: 3}
   - {fileID: 5030629861040191798, guid: b669f4a5e69edcc4b8b99a81216e5917, type: 3}
   rng: 0
+  minTimeUnderCover: 10
+  maxTimeUnderCover: 15
+  minShotsToTake: 5
+  maxShotsToTake: 10
+  accuracy: 50
+  currentShotsTaken: 0
+  currentMaxShotsToTake: 0
 --- !u!195 &6186577711502016612
 NavMeshAgent:
   m_ObjectHideFlags: 0
