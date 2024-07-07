@@ -17,10 +17,11 @@ public class Enemy : Unit
     public float minTimeUnderCover, maxTimeUnderCover;
     public int minShotsToTake, maxShotsToTake;
     [Range(0, 100)] public float accuracy;
-    Transform nearestCover;
+    public Transform nearestCover;
     bool shooting;
-    [HideInInspector]public int currentShotsTaken,currentMaxShotsToTake;
-    [SerializeField]Transform[] coverSpots;
+    public int currentShotsTaken,currentMaxShotsToTake;
+    //[SerializeField]Transform[] coverSpots;
+    public EnemySpawner spawner;
     //LevelManager levelManager;
     // Start is called before the first frame update
     protected virtual void Start()
@@ -45,7 +46,7 @@ public class Enemy : Unit
         anim.SetBool("Player", shooting/*!player.dead && hit.collider != null && hit.collider.GetComponent<Weapon>()*/); // since boxcast cannot detect player(changing player layer does nothing), boxcast checks for player weapon instead.
         anim.SetFloat("Speed", agent.velocity.sqrMagnitude);
         Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
-        if (hit.collider != null && hit.collider.GetComponent<Weapon>()) { // move to closest cover if player detected
+        if (hit.collider != null && hit.collider.GetComponentInParent<Player>()) { // move to closest cover if player detected
             GetToCover();
         }
         if (hitpoints <= 0)StartCoroutine(Death());
@@ -80,9 +81,12 @@ public class Enemy : Unit
         }
         Instantiate(drops[dropindex], transform.position, transform.rotation);
     }
-    public void Init() {
-        nearestCover = coverSpots[UnityEngine.Random.Range(0, coverSpots.Length)];
-        if (Physics.Raycast(rayposition.position, nearestCover.position))nearestCover = coverSpots[UnityEngine.Random.Range(0, coverSpots.Length)];
+    void Init() {
+        nearestCover = spawner.coverSpots[UnityEngine.Random.Range(0, spawner.coverSpots.Length)];
+        //RaycastHit hit;
+        //if (Physics.Raycast(rayposition.position, nearestCover.position, out hit)) {
+        //    if (hit.collider) if (hit.collider.GetComponent<Enemy>()) nearestCover = coverSpots[UnityEngine.Random.Range(0, coverSpots.Length)];
+        //}
         //foreach (var i in coverSpots) { // finds closest cover spot
         //    float closest = 999;
         //    if (Vector3.Distance(transform.position, i.position) < closest) {
@@ -104,8 +108,9 @@ public class Enemy : Unit
     }
     public IEnumerator ShootCo() {
         anim.SetTrigger("Crouch");
+        shooting = false;
         yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeUnderCover, maxTimeUnderCover)); // enemy hides under cover for random period
-        anim.SetTrigger("Crouch");
+        //anim.SetTrigger("Crouch");
         shooting = true;
         currentMaxShotsToTake = UnityEngine.Random.Range(minShotsToTake, maxShotsToTake); // enemy takes a random amount of shots at the player
         currentShotsTaken = 0;

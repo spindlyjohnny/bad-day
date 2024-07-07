@@ -918,7 +918,6 @@ MonoBehaviour:
   maxhitpoints: 3
   hitsound: {fileID: 8300000, guid: 8888b61aef05c074fba460580004c865, type: 3}
   deathsound: {fileID: 8300000, guid: a21dad3470a1da44ca777c4986b33170, type: 3}
-  canMove: 0
   dead: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
@@ -932,6 +931,14 @@ MonoBehaviour:
   - {fileID: 3286993470264944345, guid: ace629ac2d606d84388839dce48a04d2, type: 3}
   - {fileID: 5030629861040191798, guid: b669f4a5e69edcc4b8b99a81216e5917, type: 3}
   rng: 0
+  minTimeUnderCover: 0
+  maxTimeUnderCover: 0
+  minShotsToTake: 0
+  maxShotsToTake: 0
+  accuracy: 65
+  currentShotsTaken: 0
+  currentMaxShotsToTake: 0
+  coverSpots: []
   deathvfx: {fileID: 704984783148503851, guid: 11326e07dd8deb649a535df0501be788, type: 3}
 --- !u!135 &2930547492562011710
 SphereCollider:

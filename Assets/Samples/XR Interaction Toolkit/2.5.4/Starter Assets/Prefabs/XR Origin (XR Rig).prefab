@@ -706,6 +706,7 @@ GameObject:
   - component: {fileID: 1767192439}
   - component: {fileID: 1767192437}
   - component: {fileID: 6232745470614056083}
+  - component: {fileID: 4920271308901332962}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -889,6 +890,27 @@ MonoBehaviour:
       m_Action: Rotation
       m_Flags: 0
     m_Flags: 0
+--- !u!65 &4920271308901332962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767192433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.8476508, z: 1}
+  m_Center: {x: 0, y: -0.4238255, z: 0}
 --- !u!1 &58445280694286476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1667,6 @@ MonoBehaviour:
   maxhitpoints: 5
   hitsound: {fileID: 8300000, guid: 737c23acd1ec09240831451f13ec3e63, type: 3}
   deathsound: {fileID: 8300000, guid: 5e6a5609d2e11c547b9aa8d6f38a909e, type: 3}
-  canMove: 0
   dead: 0
   anim: {fileID: 0}
   rb: {fileID: 0}

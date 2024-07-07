@@ -5,36 +5,47 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public int enemiesspawned;
+    [SerializeField]int enemiesspawned;
     public int enemiestospawn;
     // Start is called before the first frame update
     public GameObject[] instprefab;
     public float instrate;
-    LevelManager levelManager;
+    //LevelManager levelManager;
     Player player;
-    float nextinsttime;
+    //float nextinsttime;
+    public Transform[] coverSpots;
     //public bool canSpawn;
     //public int currentwave;
     //public int iter = 0;
     void Start() {
-        levelManager = FindObjectOfType<LevelManager>();
+        //levelManager = FindObjectOfType<LevelManager>();
         player = FindObjectOfType<Player>();
+        coverSpots = GetComponentsInChildren<Transform>();
     }
 
     // Update is called once per frame
     void Update() {
-
-        Spawn();
+        StartCoroutine(Spawn());
+        //Spawn();
         //if (!levelManager.currentroom.GetComponent<Room>().roomstart && levelManager.wavecomplete) gameObject.SetActive(false);
     }
-    void Spawn() {
-        if (enemiesspawned <= enemiestospawn - 1 && !player.dead) {
-            if (Time.time < nextinsttime) return;
+    //void Spawn() {
+    //    if (enemiesspawned <= enemiestospawn - 1 && !player.dead) {
+    //        if (Time.time < nextinsttime) return;
+    //        GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
+    //        go.GetComponentInChildren<Enemy>().nearestCover = coverSpots[Random.Range(0, coverSpots.Length)];
+    //        go.GetComponentInChildren<Enemy>().GetToCover();
+    //        nextinsttime = Time.time + instrate;
+    //        enemiesspawned++;
+    //    }
+    //}
+    IEnumerator Spawn() {
+        while(enemiesspawned < enemiestospawn) {
             GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
-            //go.GetComponentInChildren<Enemy>().spawned = true;
-            //go.GetComponentInChildren<Enemy>().spawner = transform;
-            nextinsttime = Time.time + instrate;
             enemiesspawned++;
+            go.GetComponent<Enemy>().spawner = this;
+            yield return new WaitForSeconds(instrate);
+            if (enemiesspawned == enemiestospawn) break;
         }
     }
     //public void BossSpawn() {

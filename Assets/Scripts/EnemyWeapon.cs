@@ -18,10 +18,11 @@ public class EnemyWeapon : Weapon
     }
     public override void Fire() {
         Destroy(Instantiate(muzzleflash, firept.position, Quaternion.identity), .3f);
-        bool hitplayer = Random.Range(0, 100) < enemy.accuracy;
+        bool hitplayer = Random.Range(0, 100) < enemy.accuracy; // enemy hits player only if rng falls within its accuracy
         if (hitplayer) {
             RaycastHit hit;
             if (Physics.Raycast(firept.position, FindObjectOfType<Camera>().transform.position - firept.position, out hit)) {
+                //print(gameObject.name + " Hit: " + hit.collider);
                 Player player = hit.collider.GetComponentInParent<Player>();
                 if (player) player.Damaged(damage);
             }
@@ -33,13 +34,17 @@ public class EnemyWeapon : Weapon
         //if (enemy.hit.collider && enemy.hit.collider.GetComponent<Weapon>() && hitplayer) {
         //    enemy.player.Damaged(damage);
         //}
-        AudioManager.instance.PlaySFX(shootSound);
+        AudioManager.instance.PlaySFX(shootSound,true);
         //if(hit.collider)print(hit.collider.name);
         //if (hit.collider.GetComponent<Enemy>()) {
         //    hit.collider.GetComponent<Enemy>().Damaged(damage);
         //    //StartCoroutine(hit.collider.GetComponent<Enemy>().Hit());
         //}
         //ApplyRecoil();
+    }
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(firept.position, firept.position + FindObjectOfType<Camera>().transform.position - firept.position);
     }
     //IEnumerator Shoot() {
     //    while (true) {

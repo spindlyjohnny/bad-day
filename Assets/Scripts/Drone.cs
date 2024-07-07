@@ -9,13 +9,20 @@ public class Drone : Enemy
     // Start is called before the first frame update
     protected override void Start() {
         weapons = GetComponentsInChildren<EnemyWeapon>();
-        base.Start();
+        //rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        weapon = GetComponentInChildren<EnemyWeapon>();
+        hitpoints = maxhitpoints;
+        player = FindObjectOfType<Player>();
+        //levelManager = FindObjectOfType<LevelManager>();
+        dead = false;
+        //shooting = false;
     }
 
     // Update is called once per frame
     protected override void Update() {
         Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
-        anim.SetBool("Player", !player.dead && hit.collider != null && hit.collider.GetComponent<Weapon>()); // since raycast cannot detect player(changing player layer does nothing), raycast checks for player weapon instead.
+        anim.SetBool("Player", !player.dead && hit.collider != null && hit.collider.GetComponentInParent<Player>());
         //Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
         //Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
         if(hit.collider)print(hit.collider.name);

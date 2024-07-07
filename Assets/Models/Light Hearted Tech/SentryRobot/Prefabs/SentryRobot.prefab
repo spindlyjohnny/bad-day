@@ -966,7 +966,6 @@ MonoBehaviour:
   maxhitpoints: 3
   hitsound: {fileID: 8300000, guid: 8888b61aef05c074fba460580004c865, type: 3}
   deathsound: {fileID: 8300000, guid: 5e840e68ecef02e46a8adedf92208eb1, type: 3}
-  canMove: 0
   dead: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
@@ -980,6 +979,14 @@ MonoBehaviour:
   - {fileID: 3286993470264944345, guid: ace629ac2d606d84388839dce48a04d2, type: 3}
   - {fileID: 5030629861040191798, guid: b669f4a5e69edcc4b8b99a81216e5917, type: 3}
   rng: 0
+  minTimeUnderCover: 0
+  maxTimeUnderCover: 0
+  minShotsToTake: 0
+  maxShotsToTake: 0
+  accuracy: 45
+  currentShotsTaken: 0
+  currentMaxShotsToTake: 0
+  coverSpots: []
   deathvfx: {fileID: 704984783148503851, guid: 881eeb38220f136409e050bdbef56541, type: 3}
 --- !u!1 &3330302223395446422
 GameObject:
