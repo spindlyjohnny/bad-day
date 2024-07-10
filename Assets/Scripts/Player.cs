@@ -41,10 +41,10 @@ public class Player : Unit
         if (dead) return;
         int index1 = currentweapon == weapons[0] ? 0 : 1;
         int index2 = currentweapon == weapons[0] ? 1 : 0;
-        print(currentweapon);
+        //print(currentweapon);
         if (Input.GetButtonDown("Switch")) { // b button
             SwitchWeapon(weapons[index2].gameObject, weapons[index1].gameObject);
-            print("gyatt");
+            //print("gyatt");
         }
     }
     public override IEnumerator Hit() {
