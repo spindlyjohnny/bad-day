@@ -39,11 +39,11 @@ public class Player : Unit
     void Update() {
         if (hitpoints <= 0 && !dead) Death();
         if (dead) return;
-        int index1 = currentweapon == weapons[0] ? 0 : 1;
-        int index2 = currentweapon == weapons[0] ? 1 : 0;
-        //print(currentweapon);
+        //int index1 = currentweapon == weapons[0] ? 0 : 1;
+        //int index2 = currentweapon == weapons[0] ? 1 : 0;
+        ////print(currentweapon);
         if (Input.GetButtonDown("Switch")) { // b button
-            SwitchWeapon(weapons[index2].gameObject, weapons[index1].gameObject);
+            SwitchWeapon();
             //print("gyatt");
         }
     }
@@ -58,9 +58,19 @@ public class Player : Unit
         //canMove = false;
         PlayDeathSound();
     }
-    public void SwitchWeapon(GameObject weapon,GameObject switchedweapon) {
-        switchedweapon.SetActive(false);
-        weapon.SetActive(true);
-        currentweapon = weapon.GetComponent<Weapon>();
+    public void SwitchWeapon() {
+        if (weapons[0].gameObject.activeSelf) {
+            weapons[0].gameObject.SetActive(false);
+            weapons[1].gameObject.SetActive(true);
+            currentweapon = weapons[1];
+        } 
+        else {
+            weapons[1].gameObject.SetActive(false);
+            weapons[0].gameObject.SetActive(true);
+            currentweapon = weapons[0];
+        }
+        //switchedweapon.SetActive(false);
+        //weapon.SetActive(true);
+        //currentweapon = weapon.GetComponent<Weapon>();
     }
 }

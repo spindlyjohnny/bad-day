@@ -29,7 +29,6 @@ public class LevelManager : MonoBehaviour
         shieldbar.fillAmount = player.shieldpoints / player.maxshieldpoints;
         ammocount.text = player.currentweapon.currentammo +"/"+ (player.currentweapon.maxammo - player.currentweapon.ammoInClip);
         weaponimg.sprite = weaponSprites[Array.IndexOf(player.weapons,player.currentweapon)];
-
     }
     void SetCanvasPosition() {
         //float angle = Mathf.Atan2(player.transform.position.z,canvas.transform.position.z) * Mathf.Rad2Deg;

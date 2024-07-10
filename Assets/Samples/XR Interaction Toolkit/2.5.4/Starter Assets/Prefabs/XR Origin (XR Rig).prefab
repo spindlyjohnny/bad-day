@@ -359,6 +359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6416286267912871719}
   - {fileID: 3954319948395782924}
   - {fileID: 1096734238491090331}
   - {fileID: 3921468432820449555}
@@ -684,7 +685,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2692651709207538867}
-  - {fileID: 6416286267912871719}
   - {fileID: 1767192434}
   - {fileID: 2196849375614954873}
   - {fileID: 3595914740002285240}
@@ -2864,7 +2864,7 @@ Transform:
   m_Children:
   - {fileID: 5079748669441097528}
   - {fileID: 3251177760319733678}
-  m_Father: {fileID: 1680501587}
+  m_Father: {fileID: 1670256625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5140714161854455764
 GameObject:
@@ -5360,18 +5360,6 @@ PrefabInstance:
     - target: {fileID: 1795228596878305420, guid: ec8471ebdc23ab8409760a545124f008, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7173623153639068942, guid: ec8471ebdc23ab8409760a545124f008, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.012
-      objectReference: {fileID: 0}
-    - target: {fileID: 7173623153639068942, guid: ec8471ebdc23ab8409760a545124f008, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.107
-      objectReference: {fileID: 0}
-    - target: {fileID: 7173623153639068942, guid: ec8471ebdc23ab8409760a545124f008, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.306
       objectReference: {fileID: 0}
     - target: {fileID: 7173623153639068942, guid: ec8471ebdc23ab8409760a545124f008, type: 3}
       propertyPath: m_LocalRotation.w

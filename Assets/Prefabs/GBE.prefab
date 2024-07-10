@@ -72,15 +72,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 00d46af01b53a8246a18aec6f72c5fcd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2693882
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00d46af01b53a8246a18aec6f72c5fcd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00d46af01b53a8246a18aec6f72c5fcd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9082904
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00d46af01b53a8246a18aec6f72c5fcd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -113,6 +113,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 00d46af01b53a8246a18aec6f72c5fcd, type: 3}
       propertyPath: m_Name
       value: GBE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546393365307620432, guid: 00d46af01b53a8246a18aec6f72c5fcd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -406,7 +410,7 @@ MonoBehaviour:
   damage: 2
   muzzleflash: {fileID: 0}
   maxammo: 0
-  ammo: 0
+  currentammo: 0
   ammoInClip: 1
   originalmaxammo: 3
   shootSound: {fileID: 8300000, guid: 9bf9a72bec41a2c4486f4837d235e1f6, type: 3}
