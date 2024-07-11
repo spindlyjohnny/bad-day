@@ -1674,9 +1674,10 @@ MonoBehaviour:
   hurtmat: {fileID: 0}
   hurtvfx: {fileID: 704984783148503851, guid: a3b80a5171acdec4e9a66b93a58dfa70, type: 3}
   shieldpoints: 0
-  maxshieldpoints: 5
+  maxshieldpoints: 10
   currentweapon: {fileID: 0}
   weapons: []
+  pickupsound: {fileID: 8300000, guid: 0ef9ddb3676103142b60d3ba0f76b798, type: 3}
 --- !u!1 &1787516059220952802
 GameObject:
   m_ObjectHideFlags: 0

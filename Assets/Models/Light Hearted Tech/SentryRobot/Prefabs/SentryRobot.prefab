@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 0
-  maxhitpoints: 3
+  maxhitpoints: 5
   hitsound: {fileID: 8300000, guid: 8888b61aef05c074fba460580004c865, type: 3}
   deathsound: {fileID: 8300000, guid: 5e840e68ecef02e46a8adedf92208eb1, type: 3}
   dead: 0
@@ -984,9 +984,10 @@ MonoBehaviour:
   minShotsToTake: 0
   maxShotsToTake: 0
   accuracy: 45
+  nearestCover: {fileID: 0}
   currentShotsTaken: 0
   currentMaxShotsToTake: 0
-  coverSpots: []
+  spawner: {fileID: 0}
   deathvfx: {fileID: 704984783148503851, guid: 881eeb38220f136409e050bdbef56541, type: 3}
 --- !u!1 &3330302223395446422
 GameObject:

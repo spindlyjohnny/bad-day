@@ -34,6 +34,7 @@ public class Unit : MonoBehaviour {
         Physics.IgnoreLayerCollision(3, 6, false);
     }*/
     public virtual void OnTriggerEnter(Collider other) {
+        if (dead) return;
         if (other.GetComponent<Projectile>()) {
             Damaged(0,other);
         }

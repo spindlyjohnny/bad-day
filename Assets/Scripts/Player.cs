@@ -11,7 +11,7 @@ public class Player : Unit
     public float maxshieldpoints;
     public Weapon currentweapon;
     public Weapon[] weapons;
-    //public InputActionReference select;
+    public AudioClip pickupsound;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +45,22 @@ public class Player : Unit
         if (Input.GetButtonDown("Switch")) { // b button
             SwitchWeapon();
             //print("gyatt");
+        }
+    }
+    public override void OnTriggerEnter(Collider other) {
+        base.OnTriggerEnter(other);
+        if (other.GetComponent<Pickup>()) {
+            Pickup pickup = other.GetComponent<Pickup>();
+            if (pickup.gameObject.CompareTag("Health")) {
+                hitpoints = pickup.Use(hitpoints, maxhitpoints);
+            } 
+            else if (pickup.gameObject.CompareTag("Shield")) {
+                shieldpoints = pickup.Use(shieldpoints, maxshieldpoints);
+            } 
+            else if (pickup.gameObject.CompareTag("Ammo")) {
+                currentweapon.maxammo = pickup.Use(currentweapon.maxammo, currentweapon.originalmaxammo);
+            }
+            AudioManager.instance.PlaySFX(pickupsound);
         }
     }
     public override IEnumerator Hit() {

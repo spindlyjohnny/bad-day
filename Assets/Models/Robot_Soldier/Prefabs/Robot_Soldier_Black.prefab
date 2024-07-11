@@ -2815,7 +2815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 0
-  maxhitpoints: 5
+  maxhitpoints: 20
   hitsound: {fileID: 8300000, guid: fd692e0fd3d98f54983c6b221b76f5f4, type: 3}
   deathsound: {fileID: 8300000, guid: 11080239c2070e04b8447f48cb3f92d9, type: 3}
   dead: 0
@@ -2839,7 +2839,7 @@ MonoBehaviour:
   nearestCover: {fileID: 0}
   currentShotsTaken: 0
   currentMaxShotsToTake: 0
-  coverSpots: []
+  spawner: {fileID: 0}
 --- !u!195 &6186577711502016612
 NavMeshAgent:
   m_ObjectHideFlags: 0

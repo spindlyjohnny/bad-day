@@ -5,29 +5,29 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public float value;
-    Player player;
-    bool grabbed;
+    //Player player;
+    //bool grabbed;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Player>();
-        grabbed = false;
+        //player = FindObjectOfType<Player>();
+        //grabbed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Use") && grabbed && !player.dead) {
-            if (gameObject.CompareTag("Health")) {
-                player.hitpoints = Use(player.hitpoints, player.maxhitpoints);
-            } 
-            else if (gameObject.CompareTag("Shield")) {
-                player.shieldpoints = Use(player.shieldpoints, player.maxshieldpoints);
-            } 
-            else if (gameObject.CompareTag("Ammo")) {
-                player.currentweapon.maxammo = Use(player.currentweapon.maxammo, player.currentweapon.originalmaxammo);
-            }
-        }
+        //if (Input.GetButtonDown("Use") && grabbed && !player.dead) {
+        //    if (gameObject.CompareTag("Health")) {
+        //        player.hitpoints = Use(player.hitpoints, player.maxhitpoints);
+        //    } 
+        //    else if (gameObject.CompareTag("Shield")) {
+        //        player.shieldpoints = Use(player.shieldpoints, player.maxshieldpoints);
+        //    } 
+        //    else if (gameObject.CompareTag("Ammo")) {
+        //        player.currentweapon.maxammo = Use(player.currentweapon.maxammo, player.currentweapon.originalmaxammo);
+        //    }
+        //}
     }
     public float Use(float resource,float resourceMax) {
         resource += value;
@@ -44,6 +44,6 @@ public class Pickup : MonoBehaviour
         //Destroy(gameObject, .3f);
     }
     public void Grabbed(bool isGrabbed) {
-        grabbed = isGrabbed;
+        //grabbed = isGrabbed;
     }
 }
