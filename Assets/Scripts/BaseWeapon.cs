@@ -17,7 +17,7 @@ public class BaseWeapon : Weapon
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Reload")) /*Reload();*/Reload(ammoInClip - currentammo);
+        //if (Input.GetButtonDown("Reload")) /*Reload();*/Reload(ammoInClip - currentammo);
     }
     public override void Fire() {
         if (player.dead) return;
@@ -51,8 +51,8 @@ public class BaseWeapon : Weapon
     }
     public void Reload(int ammo) {
         if (maxammo == currentammo) return;
-        currentammo += (ammoInClip - currentammo);
-        maxammo -= (ammoInClip - currentammo);
+        currentammo += ammo;
+        maxammo -= ammo;
         //if (ammo > 0) {
         //    maxammo -= ammo;
         //    ammo = ammoInClip;

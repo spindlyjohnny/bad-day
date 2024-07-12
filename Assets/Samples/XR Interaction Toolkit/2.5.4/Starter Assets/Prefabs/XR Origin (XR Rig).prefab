@@ -1678,6 +1678,7 @@ MonoBehaviour:
   currentweapon: {fileID: 0}
   weapons: []
   pickupsound: {fileID: 8300000, guid: 0ef9ddb3676103142b60d3ba0f76b798, type: 3}
+  reloadSound: {fileID: 8300000, guid: a5d8506062f5ae94e9115025ca8684ce, type: 3}
 --- !u!1 &1787516059220952802
 GameObject:
   m_ObjectHideFlags: 0

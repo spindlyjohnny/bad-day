@@ -11,7 +11,7 @@ public class Player : Unit
     public float maxshieldpoints;
     public Weapon currentweapon;
     public Weapon[] weapons;
-    public AudioClip pickupsound;
+    public AudioClip pickupsound,reloadSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +46,7 @@ public class Player : Unit
             SwitchWeapon();
             //print("gyatt");
         }
+        if (Input.GetButtonDown("Reload")) Reload();
     }
     public override void OnTriggerEnter(Collider other) {
         base.OnTriggerEnter(other);
@@ -88,5 +89,19 @@ public class Player : Unit
         //switchedweapon.SetActive(false);
         //weapon.SetActive(true);
         //currentweapon = weapon.GetComponent<Weapon>();
+    }
+    public void Reload(/*int ammo*/) {
+        if (currentweapon.maxammo == currentweapon.currentammo) return;
+        int ammo = currentweapon.ammoInClip - currentweapon.currentammo;
+        currentweapon.currentammo += ammo;//(currentweapon.ammoInClip - currentweapon.currentammo);
+        currentweapon.maxammo -= ammo;//(currentweapon.ammoInClip - currentweapon.currentammo);
+        //if (ammo > 0) {
+        //    maxammo -= ammo;
+        //    ammo = ammoInClip;
+        //} else {
+        //    ammo = ammoInClip;
+        //    maxammo -= ammoInClip;
+        //}
+        AudioManager.instance.PlaySFX(reloadSound);
     }
 }
