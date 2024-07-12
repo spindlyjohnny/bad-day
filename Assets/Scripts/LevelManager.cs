@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        StartCoroutine(AudioManager.instance.SwitchMusic(AudioManager.instance.levelmusic));
     }
 
     // Update is called once per frame

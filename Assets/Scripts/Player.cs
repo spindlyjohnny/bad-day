@@ -53,14 +53,20 @@ public class Player : Unit
         if (other.GetComponent<Pickup>()) {
             Pickup pickup = other.GetComponent<Pickup>();
             if (pickup.gameObject.CompareTag("Health")) {
-                hitpoints = pickup.Use(hitpoints, maxhitpoints);
+                hitpoints = Use(hitpoints, maxhitpoints,2);
             } 
             else if (pickup.gameObject.CompareTag("Shield")) {
-                shieldpoints = pickup.Use(shieldpoints, maxshieldpoints);
+                shieldpoints = Use(shieldpoints, maxshieldpoints,3);
             } 
             else if (pickup.gameObject.CompareTag("Ammo")) {
-                currentweapon.maxammo = pickup.Use(currentweapon.maxammo, currentweapon.originalmaxammo);
+                if (currentweapon.GetComponent<BaseWeapon>()) {
+                    currentweapon.maxammo = Use(currentweapon.maxammo, currentweapon.originalmaxammo,15);
+                } 
+                else {
+                    currentweapon.maxammo = Use(currentweapon.maxammo, currentweapon.originalmaxammo, 1);
+                }
             }
+            other.gameObject.SetActive(false);
             AudioManager.instance.PlaySFX(pickupsound);
         }
     }
@@ -103,5 +109,19 @@ public class Player : Unit
         //    maxammo -= ammoInClip;
         //}
         AudioManager.instance.PlaySFX(reloadSound);
+    }
+    public float Use(float resource, float resourceMax,float value) {
+        resource += value;
+        if (resource > resourceMax) resource = resourceMax;
+        //gameObject.SetActive(false);
+        //Destroy(gameObject, .3f);
+        return resource;
+    }
+    public int Use(int resource, int resourceMax,int value) {
+        resource += value;
+        if (resource > resourceMax) resource = resourceMax;
+        //gameObject.SetActive(false);
+        //Destroy(gameObject, .3f);
+        return resource;
     }
 }

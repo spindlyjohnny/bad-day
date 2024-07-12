@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
     public static AudioManager instance; // singleton
     [SerializeField] AudioSource sfxaudio, musicaudio; // audiosources for music and sfx
-    //public AudioClip eventsound;
+    public AudioClip titlemusic,levelmusic;
     // Start is called before the first frame update
     private void Awake() {
         if (instance == null) { // create singleton
@@ -39,5 +40,16 @@ public class AudioManager : MonoBehaviour {
             sfxaudio.pitch = 1;
         }
         sfxaudio.PlayOneShot(clip);
+    }
+    public IEnumerator SwitchMusic(AudioClip music) {
+        StopMusic();
+        yield return new WaitForSeconds(.3f);
+        PlayMusic(music);
+    }
+    // Update is called once per frame
+    void Update() {
+        if (SceneManager.GetActiveScene().buildIndex < 1) { // play title music on main menu. main menu buildindex is 0.
+            PlayMusic(titlemusic);
+        }
     }
 }

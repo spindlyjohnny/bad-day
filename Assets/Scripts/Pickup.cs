@@ -32,16 +32,16 @@ public class Pickup : MonoBehaviour
     public float Use(float resource,float resourceMax) {
         resource += value;
         if (resource > resourceMax) resource = resourceMax;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject, .3f);
         return resource;
-        //Destroy(gameObject, .3f);
     }
     public int Use(int resource, int resourceMax) {
         resource += (int)value;
         if (resource > resourceMax) resource = resourceMax;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject, .3f);
         return resource;
-        //Destroy(gameObject, .3f);
     }
     public void Grabbed(bool isGrabbed) {
         //grabbed = isGrabbed;
