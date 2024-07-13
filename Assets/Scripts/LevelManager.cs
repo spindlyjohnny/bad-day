@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.IO;
 public class LevelManager : MonoBehaviour
 {
     public GameObject canvas;
@@ -15,10 +16,17 @@ public class LevelManager : MonoBehaviour
     public Sprite[] weaponSprites;
     Player player;
     public float canvasOffset;
+    public SaveData saveData;
+    string json;
+    [SerializeField] GameObject[] activerooms,initactiverooms;
     // Start is called before the first frame update
+    private void Awake() {
+        saveData = Load();
+    }
     void Start()
     {
         player = FindObjectOfType<Player>();
+        activerooms = saveData.activerooms;
         StartCoroutine(AudioManager.instance.SwitchMusic(AudioManager.instance.levelmusic));
     }
 
@@ -26,6 +34,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         SetCanvasPosition();
+        activerooms = GameObject.FindGameObjectsWithTag("Room");
         healthbar.fillAmount = player.hitpoints / player.maxhitpoints;
         shieldbar.fillAmount = player.shieldpoints / player.maxshieldpoints;
         ammocount.text = player.currentweapon.currentammo +"/"+ (player.currentweapon.maxammo - player.currentweapon.ammoInClip);
@@ -42,5 +51,45 @@ public class LevelManager : MonoBehaviour
         //canvas.transform.rotation = Quaternion.identity;
         //canvas.transform.SetPositionAndRotation(Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime), canvasPos.rotation);
     }
-
+    public void Save() {
+        saveData.shieldpoints = player.shieldpoints;
+        saveData.hitpoints = player.hitpoints;
+        saveData.currentweapon = Array.IndexOf(player.weapons,player.currentweapon);
+        saveData.currentammo = player.currentweapon.currentammo;
+        saveData.maxammo = player.currentweapon.maxammo;
+        saveData.activerooms = activerooms;
+        saveData.spawnPoint = player.spawnPoint;
+        json = JsonUtility.ToJson(saveData);
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
+    }
+    public SaveData InitialData() {
+        SaveData save = new SaveData();
+        save.shieldpoints = 10;
+        save.hitpoints = 5;
+        save.currentweapon = 0;
+        save.currentammo = 15;
+        save.maxammo = 60;
+        save.activerooms = initactiverooms;
+        save.spawnPoint = new Vector3(0,0,-17);
+        json = JsonUtility.ToJson(save);
+        File.WriteAllText(Application.dataPath + "/save.txt", json);
+        return save;
+    }
+    public SaveData Load() {
+        if(File.Exists(Application.dataPath + "/save.txt")) {
+            return JsonUtility.FromJson<SaveData>(File.ReadAllText(Application.dataPath + "/save.txt"));
+        } 
+        else {
+            return InitialData();
+        }
+    }
+    public class SaveData {
+        public float shieldpoints;
+        public float hitpoints;
+        public GameObject[] activerooms;
+        public int currentweapon;
+        public int currentammo;
+        public int maxammo;
+        public Vector3 spawnPoint;
+    }
 }

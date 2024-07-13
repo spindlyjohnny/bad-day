@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class Player : Unit
 {
     LevelManager levelManager;
@@ -12,18 +11,27 @@ public class Player : Unit
     public Weapon currentweapon;
     public Weapon[] weapons;
     public AudioClip pickupsound,reloadSound;
+    public Vector3 spawnPoint;
     // Start is called before the first frame update
+    private void Awake() {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
     void Start()
     {
-        //select.action.started += SwitchWeapon;
         weapons = GetComponentsInChildren<Weapon>(true);
-        currentweapon = weapons[0];
+        currentweapon = weapons[levelManager.saveData.currentweapon];
+        currentweapon.currentammo = levelManager.saveData.currentammo;
+        currentweapon.maxammo = levelManager.saveData.maxammo;
         currentweapon.gameObject.SetActive(true);
         rb = GetComponent<Rigidbody>();
-        hitpoints = maxhitpoints;
-        shieldpoints = maxshieldpoints;
+        hitpoints = levelManager.saveData.hitpoints;
+        shieldpoints = levelManager.saveData.shieldpoints;
+        spawnPoint = levelManager.saveData.spawnPoint;
+        transform.position = spawnPoint;
+        //hitpoints = maxhitpoints;
+        //shieldpoints = maxshieldpoints;
         dead = false;
-        levelManager = FindObjectOfType<LevelManager>();
+        //levelManager = FindObjectOfType<LevelManager>();
         cam = FindObjectOfType<Camera>();
     }
 

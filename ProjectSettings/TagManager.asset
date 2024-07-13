@@ -7,6 +7,8 @@ TagManager:
   - Health
   - Shield
   - Ammo
+  - Room
+  - Save
   layers:
   - Default
   - TransparentFX

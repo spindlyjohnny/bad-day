@@ -5,10 +5,11 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     public GameObject[] roomsToLoad, roomsToUnload;
+    LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -18,6 +19,10 @@ public class RoomManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) {
         if (other.GetComponentInParent<Player>()) {
+            if (gameObject.CompareTag("Save")) {
+                other.GetComponentInParent<Player>().spawnPoint = transform.position;
+                levelManager.Save();
+            }
             if(roomsToLoad.Length > 0) {
                 foreach (var i in roomsToLoad) i.SetActive(true);
             }
