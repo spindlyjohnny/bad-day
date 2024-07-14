@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Drone : Enemy
 {
     EnemyWeapon[] weapons;
     [SerializeField] GameObject deathvfx;
+    NavMeshAgent myAgent;
     // Start is called before the first frame update
     protected override void Start() {
         weapons = GetComponentsInChildren<EnemyWeapon>();
@@ -16,7 +18,8 @@ public class Drone : Enemy
         player = FindObjectOfType<Player>();
         //levelManager = FindObjectOfType<LevelManager>();
         dead = false;
-        //shooting = false;
+        myAgent = GetComponent<NavMeshAgent>();
+        myAgent.SetDestination(player.transform.position);
     }
 
     // Update is called once per frame
