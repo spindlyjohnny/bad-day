@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.IO;
-public class LevelManager : MonoBehaviour
+public class LevelManager : SceneLoader
 {
     public GameObject canvas;
     public Transform canvasPos;
@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
     public SaveData saveData;
     string json;
     [SerializeField] GameObject[] activerooms,initactiverooms;
+    [SerializeField] GameObject endwall,endroom;
+    public AudioClip wallOpenSound,endSound;
     // Start is called before the first frame update
     private void Awake() {
         saveData = Load();
@@ -39,6 +41,17 @@ public class LevelManager : MonoBehaviour
         shieldbar.fillAmount = player.shieldpoints / player.maxshieldpoints;
         ammocount.text = player.currentweapon.currentammo +"/"+ (player.currentweapon.maxammo - player.currentweapon.ammoInClip);
         weaponimg.sprite = weaponSprites[Array.IndexOf(player.weapons,player.currentweapon)];
+        int enemieskilled = 0;
+        foreach(var i in endroom.GetComponentsInChildren<EnemySpawner>()) {
+            foreach(var x in i.spawnedEnemies) {
+                if (!x.activeSelf) enemieskilled++;
+            }
+        }
+        if(enemieskilled == 32) {
+            endwall.SetActive(false);
+            AudioManager.instance.PlaySFX(wallOpenSound);
+            AudioManager.instance.StopMusic();
+        }
     }
     void SetCanvasPosition() {
         //float angle = Mathf.Atan2(player.transform.position.z,canvas.transform.position.z) * Mathf.Rad2Deg;

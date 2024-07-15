@@ -241,7 +241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The only thing they fear is you
+  m_text: BAD DAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9f0073748bd9b9428b41d8ca1130118, type: 2}
   m_sharedMaterial: {fileID: 7409485994217783921, guid: b9f0073748bd9b9428b41d8ca1130118, type: 2}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.5
+  m_fontSize: 50.65
   m_fontSizeBase: 30.02
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
     public GameObject[] roomsToLoad, roomsToUnload;
     LevelManager levelManager;
     [SerializeField] GameObject saveText;
+    public AudioClip saveSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,12 @@ public class RoomManager : MonoBehaviour
             if (gameObject.CompareTag("Save")) {
                 other.GetComponentInParent<Player>().spawnPoint = transform.position;
                 StartCoroutine(ShowSaveText());
+                AudioManager.instance.PlaySFX(saveSFX);
                 levelManager.Save();
+            }
+            if (gameObject.CompareTag("Finish")) {
+                AudioManager.instance.PlaySFX(levelManager.endSound);
+                levelManager.LoadScene(0);
             }
             if(roomsToLoad.Length > 0) {
                 foreach (var i in roomsToLoad) i.SetActive(true);

@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
 
     [SerializeField]int enemiesspawned;
+    public List<GameObject> spawnedEnemies;
     public int enemiestospawn;
     // Start is called before the first frame update
     public GameObject[] instprefab;
@@ -44,6 +45,7 @@ public class EnemySpawner : MonoBehaviour {
             GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
             enemiesspawned++;
             go.GetComponent<Enemy>().spawner = this;
+            spawnedEnemies.Add(go);
             yield return new WaitForSeconds(instrate);
             if (enemiesspawned == enemiestospawn) break;
         }
