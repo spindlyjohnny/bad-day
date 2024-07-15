@@ -28,7 +28,6 @@ public class Drone : Enemy
         anim.SetBool("Player", !player.dead && hit.collider != null && hit.collider.GetComponentInParent<Player>());
         //Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
         //Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
-        if(hit.collider)print(hit.collider.name);
         if (hitpoints <= 0 && !dead) StartCoroutine(Death());
     }
     public override void Shoot() {

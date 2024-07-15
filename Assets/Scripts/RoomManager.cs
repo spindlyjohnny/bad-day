@@ -6,6 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     public GameObject[] roomsToLoad, roomsToUnload;
     LevelManager levelManager;
+    [SerializeField] GameObject saveText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class RoomManager : MonoBehaviour
         if (other.GetComponentInParent<Player>()) {
             if (gameObject.CompareTag("Save")) {
                 other.GetComponentInParent<Player>().spawnPoint = transform.position;
+                StartCoroutine(ShowSaveText());
                 levelManager.Save();
             }
             if(roomsToLoad.Length > 0) {
@@ -30,5 +32,10 @@ public class RoomManager : MonoBehaviour
                 foreach (var i in roomsToUnload) i.SetActive(false);
             }
         }
+    }
+    IEnumerator ShowSaveText() {
+        saveText.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        saveText.SetActive(false);
     }
 }

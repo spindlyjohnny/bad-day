@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
         save.currentammo = 15;
         save.maxammo = 60;
         save.activerooms = initactiverooms;
-        save.spawnPoint = new Vector3(0,0,-17);
+        save.spawnPoint = new Vector3(0,0,-10);
         json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
         return save;
