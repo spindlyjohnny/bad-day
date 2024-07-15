@@ -24,7 +24,8 @@ public class Unit : MonoBehaviour {
         healthbar.maxValue = maxHealth;
     }*/
     public virtual IEnumerator Hit() {
-        foreach(var i in GetComponentsInChildren<Renderer>())i.material = hurtmat;
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) yield break;
+        foreach (var i in GetComponentsInChildren<Renderer>())i.material = hurtmat;
         AudioManager.instance.PlaySFX(hitsound);
         yield return new WaitForSeconds(0.3f);
         foreach (var i in GetComponentsInChildren<Renderer>()) i.material = originalmat;
@@ -34,12 +35,14 @@ public class Unit : MonoBehaviour {
         Physics.IgnoreLayerCollision(3, 6, false);
     }*/
     public virtual void OnTriggerEnter(Collider other) {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         if (dead) return;
         if (other.GetComponent<Projectile>()) {
             Damaged(0,other);
         }
     }
     public virtual void Damaged(float damage = 0, Collider other = null) {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         if (dead) return;
 
         if (other) TakeHit(other.GetComponentInParent<Projectile>().damage);

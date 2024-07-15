@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class Player : Unit
 {
     LevelManager levelManager;
@@ -18,12 +19,13 @@ public class Player : Unit
     }
     void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0) return;
         weapons = GetComponentsInChildren<Weapon>(true);
         currentweapon = weapons[levelManager.saveData.currentweapon];
         currentweapon.currentammo = levelManager.saveData.currentammo;
         currentweapon.maxammo = levelManager.saveData.maxammo;
         currentweapon.gameObject.SetActive(true);
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         hitpoints = levelManager.saveData.hitpoints;
         shieldpoints = levelManager.saveData.shieldpoints;
         spawnPoint = levelManager.saveData.spawnPoint;
@@ -45,6 +47,7 @@ public class Player : Unit
         }
     }
     void Update() {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         if (hitpoints <= 0 && !dead) Death();
         if (dead) return;
         //int index1 = currentweapon == weapons[0] ? 0 : 1;
@@ -79,6 +82,7 @@ public class Player : Unit
         }
     }
     public override IEnumerator Hit() {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) yield break;
         AudioManager.instance.PlaySFX(hitsound);
         Destroy(Instantiate(hurtvfx, cam.transform.position, Quaternion.identity),.5f);
         yield return null;
@@ -86,7 +90,7 @@ public class Player : Unit
     void Death() {
         dead = true;
         levelManager.gameoverscreen.SetActive(true);
-        //canMove = false;
+        AudioManager.instance.StopMusic();
         PlayDeathSound();
     }
     public void SwitchWeapon() {

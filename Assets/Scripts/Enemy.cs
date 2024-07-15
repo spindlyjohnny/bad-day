@@ -42,6 +42,7 @@ public class Enemy : Unit
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         anim.SetBool("Death", dead);
         anim.SetBool("Player", shooting/*!player.dead && hit.collider != null && hit.collider.GetComponent<Weapon>()*/); // since boxcast cannot detect player(changing player layer does nothing), boxcast checks for player weapon instead.
         anim.SetFloat("Speed", agent.velocity.sqrMagnitude);

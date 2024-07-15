@@ -28,10 +28,12 @@ public class AudioManager : MonoBehaviour {
         musicaudio.Play();
     }
     public void PauseMusic() {
-        musicaudio.volume = 0.5f;
+        musicaudio.Pause();
+        //musicaudio.volume = 0.5f;
     }
     public void ResumeMusic() {
-        musicaudio.volume = 1f;
+        musicaudio.UnPause();
+        //musicaudio.volume = 1f;
     }
     public void PlaySFX(AudioClip clip, bool varypitch = false) {
         if (varypitch) {

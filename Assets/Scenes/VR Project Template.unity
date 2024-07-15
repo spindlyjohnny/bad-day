@@ -3432,7 +3432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &100145829
 Transform:
   m_ObjectHideFlags: 0
@@ -31676,6 +31676,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5725000371507048362, guid: b2452a5c2cd649a4db9eebcd16f7b155, type: 3}
   m_PrefabInstance: {fileID: 830001151}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &830056353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 631974084427700414, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 1847137205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796066626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc4bad45cb458d4ca8942c672529fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &832347955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41634,7 +41645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60683,10 +60694,10 @@ MonoBehaviour:
     Hold
     Left/Right Trigger - Charge GBE
 
-    Left Menu Button - Pause
+    X - Pause
 
-    Grip Buttons
-    - Grab gun, gun has to be grabbed to be used'
+    Grip Buttons - Grab gun,
+    gun has to be grabbed to be used'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9f0073748bd9b9428b41d8ca1130118, type: 2}
   m_sharedMaterial: {fileID: 7409485994217783921, guid: b9f0073748bd9b9428b41d8ca1130118, type: 2}
@@ -74228,6 +74239,38 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 830056353}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684487273604611988, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8689665891011053915, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -74275,6 +74318,10 @@ PrefabInstance:
     - target: {fileID: 9075243357820574255, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168142743249570444, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9190142498945028330, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Layer
@@ -74397,8 +74444,8 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 7535e85f-9af9-437a-878e-bcbc5efea503
-      m_Path: <XRController>{LeftHand}/menuButton
+      m_Id: 6eade37e-a554-4ad1-80de-e155d924ee8c
+      m_Path: <XRController>{LeftHand}/primaryButton
       m_Interactions: 
       m_Processors: 
       m_Groups: 
