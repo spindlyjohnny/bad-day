@@ -6819,7 +6819,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -6836,7 +6836,7 @@ PrefabInstance:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.data[2]
       value: 
-      objectReference: {fileID: 905798941}
+      objectReference: {fileID: 1755628763}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
@@ -20679,7 +20679,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -20697,6 +20697,10 @@ PrefabInstance:
       propertyPath: roomsToLoad.Array.data[2]
       value: 
       objectReference: {fileID: 1755628763}
+    - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
+      propertyPath: roomsToLoad.Array.data[3]
+      value: 
+      objectReference: {fileID: 608841973}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
@@ -34527,7 +34531,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -34545,6 +34549,10 @@ PrefabInstance:
       propertyPath: roomsToLoad.Array.data[2]
       value: 
       objectReference: {fileID: 454904932}
+    - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
+      propertyPath: roomsToLoad.Array.data[3]
+      value: 
+      objectReference: {fileID: 1931934262}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
@@ -45302,7 +45310,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -45319,7 +45327,7 @@ PrefabInstance:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.data[2]
       value: 
-      objectReference: {fileID: 905798941}
+      objectReference: {fileID: 1931934262}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
@@ -69920,7 +69928,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -69938,6 +69946,10 @@ PrefabInstance:
       propertyPath: roomsToLoad.Array.data[2]
       value: 
       objectReference: {fileID: 100145828}
+    - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
+      propertyPath: roomsToLoad.Array.data[3]
+      value: 
+      objectReference: {fileID: 1118267963}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
@@ -73521,7 +73533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -73538,7 +73550,7 @@ PrefabInstance:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.data[2]
       value: 
-      objectReference: {fileID: 905798941}
+      objectReference: {fileID: 1931934262}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
@@ -75401,7 +75413,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToLoad.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.size
@@ -75419,6 +75431,10 @@ PrefabInstance:
       propertyPath: roomsToLoad.Array.data[2]
       value: 
       objectReference: {fileID: 454904932}
+    - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
+      propertyPath: roomsToLoad.Array.data[3]
+      value: 
+      objectReference: {fileID: 1931934262}
     - target: {fileID: 4267298614551657302, guid: 37ccf89c8559f674e89fda656d2a3785, type: 3}
       propertyPath: roomsToUnload.Array.data[0]
       value: 
