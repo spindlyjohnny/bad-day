@@ -47,7 +47,7 @@ public class Player : Unit
         }
     }
     void Update() {
-        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
+        if (FindObjectOfType<PauseScreen>() && FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         if (hitpoints <= 0 && !dead) Death();
         if (dead) return;
         //int index1 = currentweapon == weapons[0] ? 0 : 1;
