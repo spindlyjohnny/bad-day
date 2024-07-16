@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
     public GameObject[] roomsToLoad, roomsToUnload;
     LevelManager levelManager;
     public AudioClip saveSFX;
+    bool once;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +20,13 @@ public class RoomManager : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other) {
-        if (other.GetComponentInParent<Player>()) {
+        if (other.GetComponentInParent<Player>() && !once) {
+            once = true;
             other.GetComponentInParent<Player>().spawnPoint = transform.position;
-            StartCoroutine(ShowSaveText());
-            AudioManager.instance.PlaySFX(saveSFX);
+            if (!gameObject.CompareTag("Finish")) {
+                StartCoroutine(ShowSaveText());
+                AudioManager.instance.PlaySFX(saveSFX);
+            }
             levelManager.Save();
             //if (gameObject.CompareTag("Save")) {
             //    //other.GetComponentInParent<Player>().spawnPoint = transform.position;

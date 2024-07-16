@@ -50,6 +50,7 @@ public class LevelManager : SceneLoader
         }
         if(enemieskilled == 32) {
             endwall.SetActive(false);
+            foreach (var i in FindObjectsOfType<Enemy>()) i.gameObject.SetActive(false);
             AudioManager.instance.PlaySFX(wallOpenSound);
             AudioManager.instance.StopMusic();
         }

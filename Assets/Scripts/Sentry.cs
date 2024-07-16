@@ -17,11 +17,13 @@ public class Sentry : Enemy
         dead = false;
     }
     protected override void Update() {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         anim.SetBool("Player", !player.dead && hit.collider != null && hit.collider.GetComponentInParent<Player>());
         Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
         //Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
         //print(hitpoints);
         if (hitpoints <= 0 && !dead)StartCoroutine(Death());
+        if (!spawner.enabled) gameObject.SetActive(false);
     }
     protected override IEnumerator Death() {
         dead = true;

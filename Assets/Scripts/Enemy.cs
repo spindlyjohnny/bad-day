@@ -59,6 +59,7 @@ public class Enemy : Unit
         dir.y = 0;
         Quaternion rotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 180 * Time.deltaTime);
+        if (!spawner.enabled) gameObject.SetActive(false);
     }
     protected virtual IEnumerator Death() {
         dead = true;
@@ -69,13 +70,13 @@ public class Enemy : Unit
     }
     protected void Drop() {
         rng = UnityEngine.Random.Range(0f, 1f);
-        if (rng > 0 && rng <= 0.5f) {
+        if (rng > 0 && rng <= 0.35f) {
             dropindex = 0; // base weapon ammo
         }
-        else if(rng > 0.5f && rng <= 0.8f) {
+        else if(rng > 0.35f && rng <= 0.65f) {
             dropindex = 1; // shield pickup
         }
-        else if(rng > 0.8f && rng <=0.95f) {
+        else if(rng > 0.65f && rng <=0.95f) {
             dropindex = 2; // health pickup
         }
         else if(rng > 0.95f && rng <= 1){

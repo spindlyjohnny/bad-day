@@ -19,16 +19,18 @@ public class Drone : Enemy
         //levelManager = FindObjectOfType<LevelManager>();
         dead = false;
         myAgent = GetComponentInParent<NavMeshAgent>();
-        myAgent.SetDestination(player.GetComponentInChildren<Camera>().transform.position);
     }
 
     // Update is called once per frame
     protected override void Update() {
+        if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
+        myAgent.SetDestination(player.GetComponentInChildren<Camera>().transform.position);
         Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
         anim.SetBool("Player", !player.dead && hit.collider != null && hit.collider.GetComponentInParent<Player>());
         //Physics.Raycast(rayposition.position, rayposition.forward, out hit, 10);
         //Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
         if (hitpoints <= 0 && !dead) StartCoroutine(Death());
+        if (!spawner.enabled) gameObject.SetActive(false);
     }
     public override void Shoot() {
         foreach(var i in weapons) {
