@@ -53,7 +53,7 @@ public class GBE : Weapon
         }
     }
     public void Reload(/*int ammo*/) {
-        if (maxammo == currentammo) return;
+        if (maxammo == currentammo || maxammo == 0) return;
         currentammo += (ammoInClip - currentammo);
         AudioManager.instance.PlaySFX(reloadSound);
         maxammo -= (ammoInClip - currentammo);

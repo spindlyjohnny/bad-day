@@ -50,7 +50,7 @@ public class BaseWeapon : Weapon
         }
     }
     public void Reload(int ammo) {
-        if (maxammo == currentammo) return;
+        if (maxammo == currentammo || maxammo == 0) return;
         currentammo += ammo;
         maxammo -= ammo;
         //if (ammo > 0) {

@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 0
-  maxhitpoints: 10
+  maxhitpoints: 5
   hitsound: {fileID: 8300000, guid: 8888b61aef05c074fba460580004c865, type: 3}
   deathsound: {fileID: 8300000, guid: a21dad3470a1da44ca777c4986b33170, type: 3}
   dead: 0

@@ -44,7 +44,7 @@ public class Enemy : Unit
     {
         if (FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         anim.SetBool("Death", dead);
-        anim.SetBool("Player", shooting/*!player.dead && hit.collider != null && hit.collider.GetComponent<Weapon>()*/); // since boxcast cannot detect player(changing player layer does nothing), boxcast checks for player weapon instead.
+        anim.SetBool("Player", shooting && !player.dead /*&& hit.collider != null && hit.collider.GetComponent<Weapon>()*/); // since boxcast cannot detect player(changing player layer does nothing), boxcast checks for player weapon instead.
         anim.SetFloat("Speed", agent.velocity.sqrMagnitude);
         Physics.BoxCast(rayposition.position, rayposition.localScale * .5f, rayposition.transform.forward, out hit, Quaternion.identity, 10);
         if (hit.collider != null && hit.collider.GetComponentInParent<Player>()) { // move to closest cover if player detected
@@ -62,8 +62,9 @@ public class Enemy : Unit
     }
     protected virtual IEnumerator Death() {
         dead = true;
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime -.5f);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         gameObject.SetActive(false);
+        //yield return null;
         Drop();
     }
     protected void Drop() {
