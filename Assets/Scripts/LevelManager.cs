@@ -21,6 +21,7 @@ public class LevelManager : SceneLoader
     [SerializeField] GameObject[] activerooms,initactiverooms;
     [SerializeField] GameObject endwall,endroom;
     public AudioClip wallOpenSound,endSound;
+    public GameObject saveText;
     // Start is called before the first frame update
     private void Awake() {
         saveData = Load();

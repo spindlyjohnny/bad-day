@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firept: {fileID: 2026372458506385890}
   recoilforce: 1
-  damage: 1
+  damage: 0.5
   muzzleflash: {fileID: 704984783148503851, guid: 5cc273072ab506f419d5ac3bf7975d9f, type: 3}
   maxammo: 0
   currentammo: 0
@@ -2831,11 +2831,11 @@ MonoBehaviour:
   - {fileID: 3286993470264944345, guid: ace629ac2d606d84388839dce48a04d2, type: 3}
   - {fileID: 5030629861040191798, guid: b669f4a5e69edcc4b8b99a81216e5917, type: 3}
   rng: 0
-  minTimeUnderCover: 10
-  maxTimeUnderCover: 15
-  minShotsToTake: 5
-  maxShotsToTake: 10
-  accuracy: 50
+  minTimeUnderCover: 2
+  maxTimeUnderCover: 6
+  minShotsToTake: 3
+  maxShotsToTake: 6
+  accuracy: 45
   nearestCover: {fileID: 0}
   currentShotsTaken: 0
   currentMaxShotsToTake: 0

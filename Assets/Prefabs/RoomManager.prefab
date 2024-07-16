@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomsToLoad: []
   roomsToUnload: []
+  saveSFX: {fileID: 8300000, guid: 5ebffb0a4005ae24ca01e3b34192d35c, type: 3}
 --- !u!65 &7318284888840409016
 BoxCollider:
   m_ObjectHideFlags: 0

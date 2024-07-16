@@ -1,1 +1,0 @@
-{"shieldpoints":10.0,"hitpoints":5.0,"activerooms":[{"instanceID":475950},{"instanceID":476676}],"currentweapon":0,"currentammo":15,"maxammo":60,"spawnPoint":{"x":0.0,"y":0.0,"z":-10.0}}
