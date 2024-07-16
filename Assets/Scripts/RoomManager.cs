@@ -27,7 +27,7 @@ public class RoomManager : MonoBehaviour
                 StartCoroutine(ShowSaveText());
                 AudioManager.instance.PlaySFX(saveSFX);
             }
-            levelManager.Save();
+            if(!other.GetComponentInParent<Player>().dead)levelManager.Save();
             //if (gameObject.CompareTag("Save")) {
             //    //other.GetComponentInParent<Player>().spawnPoint = transform.position;
             //    //StartCoroutine(ShowSaveText());

@@ -90,7 +90,6 @@ public class Player : Unit
     void Death() {
         dead = true;
         levelManager.gameoverscreen.SetActive(true);
-        AudioManager.instance.StopMusic();
         PlayDeathSound();
     }
     public void SwitchWeapon() {

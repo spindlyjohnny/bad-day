@@ -16,6 +16,14 @@ public class AudioManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+    private void Start() {
+        //if (SceneManager.GetActiveScene().buildIndex < 1) { // play title music on main menu. main menu buildindex is 0.
+        //    if(musicaudio.clip != titlemusic) {
+        //        StartCoroutine(SwitchMusic(titlemusic));
+        //    }
+        //    else PlayMusic(titlemusic);
+        //}
+    }
     public void StopMusic() {
         musicaudio.Stop();
     }
@@ -51,7 +59,10 @@ public class AudioManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (SceneManager.GetActiveScene().buildIndex < 1) { // play title music on main menu. main menu buildindex is 0.
-            PlayMusic(titlemusic);
+            /*if (musicaudio.isPlaying) {
+                StartCoroutine(SwitchMusic(titlemusic));
+            }
+            else */PlayMusic(titlemusic);
         }
     }
 }
