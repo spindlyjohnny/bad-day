@@ -59,7 +59,8 @@ public class LevelManager : SceneLoader
         canvas.transform.Rotate(0, 180f, 0);
         //canvas.transform.rotation = Quaternion.Euler(canvas.transform.rotation.x, canvasPos.rotation.y, canvas.transform.rotation.z);
         //Vector3 targetposition = new Vector3(canvasPos.position.x, canvas.transform.position.y, canvasPos.position.z  + canvasOffset);
-        canvas.transform.position = canvasPos.position + canvasPos.forward * canvasOffset;//Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime);
+        canvas.transform.position = canvasPos.position + canvasPos.forward * canvasOffset;
+        //Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime);
         canvas.transform.rotation = new Quaternion(0, canvas.transform.rotation.y, 0, canvas.transform.rotation.w);
         //canvas.transform.rotation = Quaternion.identity;
         //canvas.transform.SetPositionAndRotation(Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime), canvasPos.rotation);

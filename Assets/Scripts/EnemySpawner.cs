@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour {
     public float instrate;
     //LevelManager levelManager;
     Player player;
+    public bool canSpawn;
     //float nextinsttime;
     public Transform[] coverSpots;
     //public bool canSpawn;
@@ -26,7 +27,7 @@ public class EnemySpawner : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        StartCoroutine(Spawn());
+        if(canSpawn)StartCoroutine(Spawn());
         //Spawn();
         //if (!levelManager.currentroom.GetComponent<Room>().roomstart && levelManager.wavecomplete) gameObject.SetActive(false);
     }
@@ -44,7 +45,8 @@ public class EnemySpawner : MonoBehaviour {
         while(enemiesspawned < enemiestospawn) {
             GameObject go = Instantiate(instprefab[Random.Range(0, instprefab.Length)], transform.position, transform.rotation);
             enemiesspawned++;
-            go.GetComponent<Enemy>().spawner = this;
+            if (go.GetComponent<Enemy>()) go.GetComponent<Enemy>().spawner = this;
+            else go.GetComponentInChildren<Enemy>().spawner = this;
             spawnedEnemies.Add(go);
             yield return new WaitForSeconds(instrate);
             if (enemiesspawned == enemiestospawn) break;

@@ -18,8 +18,8 @@ public class Drone : Enemy
         player = FindObjectOfType<Player>();
         //levelManager = FindObjectOfType<LevelManager>();
         dead = false;
-        myAgent = GetComponent<NavMeshAgent>();
-        myAgent.SetDestination(player.transform.position);
+        myAgent = GetComponentInParent<NavMeshAgent>();
+        myAgent.SetDestination(player.GetComponentInChildren<Camera>().transform.position);
     }
 
     // Update is called once per frame

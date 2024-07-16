@@ -32,7 +32,12 @@ public class RoomManager : MonoBehaviour
                 levelManager.LoadScene(0);
             }
             if(roomsToLoad.Length > 0) {
-                foreach (var i in roomsToLoad) i.SetActive(true);
+                foreach (var i in roomsToLoad) {
+                    i.SetActive(true);
+                    foreach(var x in i.GetComponentsInChildren<EnemySpawner>()) {
+                        x.canSpawn = true;
+                    }
+                }
             }
             if(roomsToUnload.Length > 0) {
                 foreach (var i in roomsToUnload) i.SetActive(false);
