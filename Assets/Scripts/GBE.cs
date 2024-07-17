@@ -7,7 +7,7 @@ public class GBE : Weapon
     public GameObject projectile;
     public float maxdamage;
     public float baseDamage;
-    public AudioClip chargeSound,reloadSound;
+    public AudioClip chargeSound,reloadSound,noAmmoSound;
     Player player;
     // Start is called before the first frame update
     protected override void Start()
@@ -38,7 +38,10 @@ public class GBE : Weapon
         damage = baseDamage;
     }
     public void Charge() {
-        if (currentammo == 0 || player.dead) return;
+        if (currentammo == 0 || player.dead) {
+            AudioManager.instance.PlaySFX(noAmmoSound);
+            return;
+        }
         StartCoroutine(ChargeCo());
     }
     public IEnumerator ChargeCo() {
@@ -53,7 +56,7 @@ public class GBE : Weapon
         }
     }
     public void Reload(/*int ammo*/) {
-        if (maxammo == currentammo || maxammo == 0) return;
+        if ((maxammo == currentammo) || (maxammo - ammoInClip <= 0)) return;
         currentammo += (ammoInClip - currentammo);
         AudioManager.instance.PlaySFX(reloadSound);
         maxammo -= (ammoInClip - currentammo);

@@ -419,6 +419,7 @@ MonoBehaviour:
   baseDamage: 2
   chargeSound: {fileID: 8300000, guid: 5ebffb0a4005ae24ca01e3b34192d35c, type: 3}
   reloadSound: {fileID: 8300000, guid: a5d8506062f5ae94e9115025ca8684ce, type: 3}
+  noAmmoSound: {fileID: 8300000, guid: f18447b4ea4355743b43ee9f03278030, type: 3}
 --- !u!114 &2210731474940071045
 MonoBehaviour:
   m_ObjectHideFlags: 0

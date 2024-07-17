@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseWeapon : Weapon
 {
     public float firerate;
-    public AudioClip reloadSound;
+    public AudioClip reloadSound,noAmmoSound;
     Player player;
     // Start is called before the first frame update
     protected override void Start() {
@@ -32,7 +32,8 @@ public class BaseWeapon : Weapon
                 currentammo--;
             } 
             else if (currentammo <= 0) {
-                currentammo = 0; 
+                currentammo = 0;
+                AudioManager.instance.PlaySFX(noAmmoSound);
                 break;
             }
             Destroy(Instantiate(muzzleflash, firept.position, Quaternion.identity), .3f);
@@ -50,7 +51,7 @@ public class BaseWeapon : Weapon
         }
     }
     public void Reload(int ammo) {
-        if (maxammo == currentammo || maxammo == 0) return;
+        if ((maxammo == currentammo) || (maxammo - ammoInClip <= 0)) return;
         currentammo += ammo;
         maxammo -= ammo;
         //if (ammo > 0) {

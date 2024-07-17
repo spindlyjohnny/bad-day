@@ -40,7 +40,7 @@ public class LevelManager : SceneLoader
         activerooms = GameObject.FindGameObjectsWithTag("Room");
         healthbar.fillAmount = player.hitpoints / player.maxhitpoints;
         shieldbar.fillAmount = player.shieldpoints / player.maxshieldpoints;
-        ammocount.text = player.currentweapon.currentammo +"/"+ (player.currentweapon.maxammo - player.currentweapon.ammoInClip);
+        ammocount.text = player.currentweapon.currentammo +"/"+ Mathf.Clamp(player.currentweapon.maxammo - player.currentweapon.ammoInClip,0, player.currentweapon.maxammo - player.currentweapon.ammoInClip);
         weaponimg.sprite = weaponSprites[Array.IndexOf(player.weapons,player.currentweapon)];
         int enemieskilled = 0;
         foreach(var i in endroom.GetComponentsInChildren<EnemySpawner>()) {
@@ -84,7 +84,7 @@ public class LevelManager : SceneLoader
     public SaveData InitialData() {
         SaveData save = new SaveData();
         save.shieldpoints = 10;
-        save.hitpoints = 5;
+        save.hitpoints = 10;
         save.currentweapon = 0;
         save.currentammo = 15;
         save.maxammo = 60;

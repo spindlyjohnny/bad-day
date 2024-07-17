@@ -108,7 +108,7 @@ public class Player : Unit
         //currentweapon = weapon.GetComponent<Weapon>();
     }
     public void Reload(/*int ammo*/) {
-        if (currentweapon.maxammo == currentweapon.currentammo) return;
+        if (currentweapon.maxammo == currentweapon.currentammo || (currentweapon.maxammo - currentweapon.ammoInClip <= 0)) return;
         int ammo = currentweapon.ammoInClip - currentweapon.currentammo;
         currentweapon.currentammo += ammo;//(currentweapon.ammoInClip - currentweapon.currentammo);
         currentweapon.maxammo -= ammo;//(currentweapon.ammoInClip - currentweapon.currentammo);

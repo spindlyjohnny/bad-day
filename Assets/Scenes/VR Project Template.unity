@@ -21805,7 +21805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2996704598017948620, guid: 25dd37123a2594f4a899a18b50bd1cef, type: 3}
       propertyPath: enemiestospawn
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3153382655631659222, guid: 25dd37123a2594f4a899a18b50bd1cef, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -89966,7 +89966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoints: 0
-  maxhitpoints: 5
+  maxhitpoints: 10
   hitsound: {fileID: 8300000, guid: 737c23acd1ec09240831451f13ec3e63, type: 3}
   deathsound: {fileID: 8300000, guid: 5e6a5609d2e11c547b9aa8d6f38a909e, type: 3}
   dead: 0

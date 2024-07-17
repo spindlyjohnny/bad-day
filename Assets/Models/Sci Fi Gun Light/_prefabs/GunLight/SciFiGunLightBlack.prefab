@@ -386,12 +386,13 @@ MonoBehaviour:
   damage: 1
   muzzleflash: {fileID: 704984783148503851, guid: 5cc273072ab506f419d5ac3bf7975d9f, type: 3}
   maxammo: 0
-  ammo: 0
+  currentammo: 0
   ammoInClip: 15
   originalmaxammo: 60
   shootSound: {fileID: 8300000, guid: 748fe7b08609a6748af3b80ad89d5308, type: 3}
   firerate: 3
   reloadSound: {fileID: 8300000, guid: a5d8506062f5ae94e9115025ca8684ce, type: 3}
+  noAmmoSound: {fileID: 8300000, guid: f18447b4ea4355743b43ee9f03278030, type: 3}
 --- !u!1 &121457291341263589
 GameObject:
   m_ObjectHideFlags: 0
