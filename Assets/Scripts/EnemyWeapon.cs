@@ -14,7 +14,10 @@ public class EnemyWeapon : Weapon
     // Update is called once per frame
     void Update()
     {
-        
+        //Vector3 dir = enemy.player.GetComponentInChildren<Camera>().transform.position - enemy.transform.position;
+        //dir.y = 0;
+        //Quaternion rotation = Quaternion.LookRotation(dir);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 180 * Time.deltaTime);
     }
     public override void Fire() {
         Destroy(Instantiate(muzzleflash, firept.position, Quaternion.identity), .3f);

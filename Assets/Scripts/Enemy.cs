@@ -58,7 +58,7 @@ public class Enemy : Unit
         Vector3 dir = player.GetComponentInChildren<Camera>().transform.position - transform.position;
         dir.y = 0;
         Quaternion rotation = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 180 * Time.deltaTime);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, rotation, 180 * Time.deltaTime);
         if (!spawner.enabled) gameObject.SetActive(false);
     }
     protected virtual IEnumerator Death() {
