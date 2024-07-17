@@ -36,6 +36,7 @@ public class RoomManager : MonoBehaviour
             //}
             if (gameObject.CompareTag("Finish")) {
                 AudioManager.instance.PlaySFX(levelManager.endSound);
+                AudioManager.instance.StopMusic();
                 levelManager.LoadScene(0);
             }
             if(roomsToLoad.Length > 0) {

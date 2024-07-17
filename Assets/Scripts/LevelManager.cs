@@ -42,18 +42,18 @@ public class LevelManager : SceneLoader
         shieldbar.fillAmount = player.shieldpoints / player.maxshieldpoints;
         ammocount.text = player.currentweapon.currentammo +"/"+ Mathf.Clamp(player.currentweapon.maxammo - player.currentweapon.ammoInClip,0, player.currentweapon.maxammo - player.currentweapon.ammoInClip);
         weaponimg.sprite = weaponSprites[Array.IndexOf(player.weapons,player.currentweapon)];
-        int enemieskilled = 0;
-        foreach(var i in endroom.GetComponentsInChildren<EnemySpawner>()) {
-            foreach(var x in i.spawnedEnemies) {
-                if (!x.activeSelf) enemieskilled++;
-            }
-        }
-        if(enemieskilled == 15) {
-            endwall.SetActive(false);
-            foreach (var i in FindObjectsOfType<Enemy>()) i.gameObject.SetActive(false);
-            AudioManager.instance.PlaySFX(wallOpenSound);
-            AudioManager.instance.StopMusic();
-        }
+        //int enemieskilled = 0;
+        //foreach(var i in endroom.GetComponentsInChildren<EnemySpawner>()) {
+        //    foreach(var x in i.spawnedEnemies) {
+        //        if (!x.activeSelf) enemieskilled++;
+        //    }
+        //}
+        //if(enemieskilled == 15) {
+        //    endwall.SetActive(false);
+        //    foreach (var i in FindObjectsOfType<Enemy>()) i.gameObject.SetActive(false);
+        //    AudioManager.instance.PlaySFX(wallOpenSound);
+        //    AudioManager.instance.StopMusic();
+        //}
         if (gameoverscreen.activeSelf) {
             AudioManager.instance.StopMusic();
         }

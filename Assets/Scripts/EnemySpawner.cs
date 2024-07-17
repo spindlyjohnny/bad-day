@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour {
             else go.GetComponentInChildren<Enemy>().spawner = this;
             spawnedEnemies.Add(go);
             yield return new WaitForSeconds(instrate);
-            if (enemiesspawned == enemiestospawn) break;
+            if (enemiesspawned >= enemiestospawn) break;
         }
     }
     //public void BossSpawn() {
