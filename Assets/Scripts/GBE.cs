@@ -21,7 +21,8 @@ public class GBE : Weapon
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetButtonDown("Reload")) Reload(ammoInClip - currentammo);
+        if (Input.GetButton("Fire1")) Charge();
+        if (Input.GetButtonUp("Fire1")) Fire();
         print("Damage " + damage);
     }
     public override void Fire() {
@@ -55,10 +56,10 @@ public class GBE : Weapon
             yield return new WaitForSeconds(.1f);
         }
     }
-    public void Reload(/*int ammo*/) {
+    public void Reload(int ammo) {
         if ((maxammo == currentammo) || (maxammo - ammoInClip <= 0)) return;
-        currentammo += (ammoInClip - currentammo);
+        currentammo += ammo;
         AudioManager.instance.PlaySFX(reloadSound);
-        maxammo -= (ammoInClip - currentammo);
+        maxammo -= ammo;
     }
 }

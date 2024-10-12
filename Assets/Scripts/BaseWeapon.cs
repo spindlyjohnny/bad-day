@@ -17,7 +17,8 @@ public class BaseWeapon : Weapon
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetButtonDown("Reload")) /*Reload();*/Reload(ammoInClip - currentammo);
+        if (Input.GetButtonDown("Fire1")) Fire();
+        if (Input.GetButtonUp("Fire1")) StopAllCoroutines();
     }
     public override void Fire() {
         if (player.dead) return;
