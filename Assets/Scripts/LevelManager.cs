@@ -36,7 +36,7 @@ public class LevelManager : SceneLoader
     // Update is called once per frame
     void Update()
     {
-        SetCanvasPosition();
+        //SetCanvasPosition();
         activerooms = GameObject.FindGameObjectsWithTag("Room");
         healthbar.fillAmount = player.hitpoints / player.maxhitpoints;
         shieldbar.fillAmount = player.shieldpoints / player.maxshieldpoints;
@@ -58,18 +58,18 @@ public class LevelManager : SceneLoader
             AudioManager.instance.StopMusic();
         }
     }
-    void SetCanvasPosition() {
-        //float angle = Mathf.Atan2(player.transform.position.z,canvas.transform.position.z) * Mathf.Rad2Deg;
-        canvas.transform.LookAt(canvasPos, Vector3.up);
-        canvas.transform.Rotate(0, 180f, 0);
-        //canvas.transform.rotation = Quaternion.Euler(canvas.transform.rotation.x, canvasPos.rotation.y, canvas.transform.rotation.z);
-        //Vector3 targetposition = new Vector3(canvasPos.position.x, canvas.transform.position.y, canvasPos.position.z  + canvasOffset);
-        canvas.transform.position = canvasPos.position + canvasPos.forward * canvasOffset;
-        //Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime);
-        canvas.transform.rotation = new Quaternion(0, canvas.transform.rotation.y, 0, canvas.transform.rotation.w);
-        //canvas.transform.rotation = Quaternion.identity;
-        //canvas.transform.SetPositionAndRotation(Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime), canvasPos.rotation);
-    }
+    //void SetCanvasPosition() {
+    //    //float angle = Mathf.Atan2(player.transform.position.z,canvas.transform.position.z) * Mathf.Rad2Deg;
+    //    canvas.transform.LookAt(canvasPos, Vector3.up);
+    //    canvas.transform.Rotate(0, 180f, 0);
+    //    //canvas.transform.rotation = Quaternion.Euler(canvas.transform.rotation.x, canvasPos.rotation.y, canvas.transform.rotation.z);
+    //    //Vector3 targetposition = new Vector3(canvasPos.position.x, canvas.transform.position.y, canvasPos.position.z  + canvasOffset);
+    //    canvas.transform.position = canvasPos.position + canvasPos.forward * canvasOffset;
+    //    //Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime);
+    //    canvas.transform.rotation = new Quaternion(0, canvas.transform.rotation.y, 0, canvas.transform.rotation.w);
+    //    //canvas.transform.rotation = Quaternion.identity;
+    //    //canvas.transform.SetPositionAndRotation(Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime), canvasPos.rotation);
+    //}
     public void Save() {
         saveData.shieldpoints = player.shieldpoints;
         saveData.hitpoints = player.hitpoints;
@@ -89,7 +89,7 @@ public class LevelManager : SceneLoader
         save.currentammo = 15;
         save.maxammo = 60;
         save.activerooms = initactiverooms;
-        save.spawnPoint = new Vector3(0,0,-10);
+        save.spawnPoint = new Vector3(-1,-0.65f,-10);
         json = JsonUtility.ToJson(save);
         File.WriteAllText(Application.dataPath + "/save.txt", json);
         return save;

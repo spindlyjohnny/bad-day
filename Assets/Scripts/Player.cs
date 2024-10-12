@@ -27,7 +27,7 @@ public class Player : Unit
         currentweapon.currentammo = levelManager.saveData.currentammo;
         currentweapon.maxammo = levelManager.saveData.maxammo;
         currentweapon.gameObject.SetActive(true);
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         hitpoints = levelManager.saveData.hitpoints;
         shieldpoints = levelManager.saveData.shieldpoints;
         spawnPoint = levelManager.saveData.spawnPoint;
@@ -53,12 +53,14 @@ public class Player : Unit
         if (hitpoints <= 0 && !dead) Death();
         if (dead) return;
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        transform.Translate(movement * movespeed * Time.deltaTime);
         if (Input.GetButtonDown("Switch")) { // b button
             SwitchWeapon();
             //print("gyatt");
         }
         if (Input.GetButtonDown("Reload")) Reload();
+    }
+    private void FixedUpdate() {
+        rb.MovePosition(rb.position + movespeed * Time.deltaTime * movement);
     }
     public override void OnTriggerEnter(Collider other) {
         base.OnTriggerEnter(other);

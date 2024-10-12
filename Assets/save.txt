@@ -1,1 +1,1 @@
-{"shieldpoints":10.0,"hitpoints":10.0,"activerooms":[{"instanceID":50866},{"instanceID":51654}],"currentweapon":0,"currentammo":15,"maxammo":60,"spawnPoint":{"x":0.0,"y":0.0,"z":-10.0}}
+{"shieldpoints":10.0,"hitpoints":10.0,"activerooms":[{"instanceID":26164},{"instanceID":26920}],"currentweapon":0,"currentammo":15,"maxammo":60,"spawnPoint":{"x":-1.0,"y":-0.6499999761581421,"z":-10.0}}
