@@ -13,6 +13,8 @@ public class Player : Unit
     public Weapon[] weapons;
     public AudioClip pickupsound,reloadSound;
     public Vector3 spawnPoint;
+    Vector3 movement;
+    public float movespeed;
     // Start is called before the first frame update
     private void Awake() {
         levelManager = FindObjectOfType<LevelManager>();
@@ -50,9 +52,8 @@ public class Player : Unit
         if (FindObjectOfType<PauseScreen>() && FindObjectOfType<PauseScreen>().pausescreen.activeSelf) return;
         if (hitpoints <= 0 && !dead) Death();
         if (dead) return;
-        //int index1 = currentweapon == weapons[0] ? 0 : 1;
-        //int index2 = currentweapon == weapons[0] ? 1 : 0;
-        ////print(currentweapon);
+        movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        transform.Translate(movement * movespeed * Time.deltaTime);
         if (Input.GetButtonDown("Switch")) { // b button
             SwitchWeapon();
             //print("gyatt");
