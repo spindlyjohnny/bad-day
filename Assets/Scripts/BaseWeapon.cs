@@ -47,7 +47,7 @@ public class BaseWeapon : Weapon
                     hit.collider.GetComponentInParent<Enemy>().Damaged(damage);
                 }
             }
-            ApplyRecoil();
+            //ApplyRecoil();
             yield return new WaitForSeconds(1 / firerate);
         }
     }

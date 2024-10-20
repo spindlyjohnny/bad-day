@@ -14,7 +14,8 @@ public class Player : Unit
     public AudioClip pickupsound,reloadSound;
     public Vector3 spawnPoint;
     Vector3 movement;
-    public float movespeed;
+    Vector2 rotation;
+    public float movespeed,rotationSpeed;
     // Start is called before the first frame update
     private void Awake() {
         levelManager = FindObjectOfType<LevelManager>();
@@ -37,6 +38,7 @@ public class Player : Unit
         dead = false;
         //levelManager = FindObjectOfType<LevelManager>();
         cam = FindObjectOfType<Camera>();
+        rotation = Vector2.zero;
     }
 
     // Update is called once per frame
@@ -58,7 +60,9 @@ public class Player : Unit
             //print("gyatt");
         }
         if (Input.GetButtonDown("Reload")) Reload();
-        SetRotation();
+        Vector2 angularVel = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * rotationSpeed;
+        rotation += angularVel * Time.deltaTime;
+        transform.localEulerAngles = new Vector3(-Mathf.Clamp(rotation.y,-90f,90f), rotation.x, 0);
     }
     private void FixedUpdate() {
         rb.MovePosition(rb.position + movespeed * Time.deltaTime * movement);
@@ -110,22 +114,6 @@ public class Player : Unit
         //switchedweapon.SetActive(false);
         //weapon.SetActive(true);
         //currentweapon = weapon.GetComponent<Weapon>();
-    }
-    void SetRotation() {
-        //float angle = Mathf.Atan2(player.transform.position.z,canvas.transform.position.z) * Mathf.Rad2Deg;
-        transform.LookAt(Input.mousePosition, Vector3.up);
-        
-        //canvas.transform.Rotate(0, 180f, 0);
-        
-        //canvas.transform.rotation = Quaternion.Euler(canvas.transform.rotation.x, canvasPos.rotation.y, canvas.transform.rotation.z);
-        //Vector3 targetposition = new Vector3(canvasPos.position.x, canvas.transform.position.y, canvasPos.position.z  + canvasOffset);
-        //cam.transform.position = transform.position + canvasPos.forward * canvasOffset;
-        //Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime);
-        
-        transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-        
-        //canvas.transform.rotation = Quaternion.identity;
-        //canvas.transform.SetPositionAndRotation(Vector3.Lerp(canvas.transform.position, targetposition, canvasSpeed * Time.deltaTime), canvasPos.rotation);
     }
     public void Reload(/*int ammo*/) {
         if (currentweapon.maxammo == currentweapon.currentammo || (currentweapon.maxammo - currentweapon.ammoInClip <= 0)) return;

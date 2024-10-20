@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
     public Transform firept;
     //XRGrabInteractable weapon;
     public float recoilforce;
-    protected Rigidbody rb;
+    //protected Rigidbody rb;
     public float damage;
     public GameObject muzzleflash;
     public int maxammo, currentammo,ammoInClip,originalmaxammo;
@@ -18,7 +18,7 @@ public abstract class Weapon : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         //weapon = GetComponent<XRGrabInteractable>();
     }
 
@@ -28,7 +28,7 @@ public abstract class Weapon : MonoBehaviour
         
     }
     public abstract void Fire();
-    protected void ApplyRecoil() {
-        rb.AddRelativeForce(Vector3.back * recoilforce, ForceMode.Impulse);
-    }
+    //protected void ApplyRecoil() {
+    //    rb.AddRelativeForce(Vector3.back * recoilforce, ForceMode.Impulse);
+    //}
 }
